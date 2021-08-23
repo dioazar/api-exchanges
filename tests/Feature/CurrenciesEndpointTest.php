@@ -17,5 +17,6 @@ class CurrenciesEndpointTest extends TestCase
     {
         $response = $this->getJson('/api/v1/currencies');
         $response->assertStatus(200);
+//        $response->assertExactJson([]);
     }
 }

@@ -49,7 +49,7 @@ class CurrencyValueService
             $currencyValues->whereBetween('date', [$from, $to]);
         }
 
-        return $currencyValues->orderBy('id', 'DESC')->paginate(50);
+        return $currencyValues->orderBy('id', 'DESC')->paginate(50)->appends(request()->input());
     }
 
     public function getLast(string $currency_code)
