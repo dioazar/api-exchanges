@@ -1,0 +1,116 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ExchangesApi",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/v1/currencies/list": {
+            "get": {
+                "operationId": "354eadc99d124bb5df5e260ed773dba6",
+                "responses": {
+                    "200": {
+                        "description": "Display all avaiable currencies."
+                    }
+                }
+            }
+        },
+        "/api/v1/currencies": {
+            "get": {
+                "operationId": "a165a2fa5febcdd982c9ca51722de687",
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of currency values."
+                    }
+                }
+            }
+        },
+        "/api/v1/currencies/filters?currency_code={currency_code}&date_from={date_from}&date_to={date_to}": {
+            "get": {
+                "operationId": "b1c9b9536a6f270107f0b178444015f4",
+                "parameters": [
+                    {
+                        "name": "currency_code",
+                        "in": "path",
+                        "description": "currency code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "USD currency.",
+                                "value": "USD"
+                            }
+                        }
+                    },
+                    {
+                        "name": "date_from",
+                        "in": "path",
+                        "description": "date from",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "Date format YYYY-MM-DD.",
+                                "value": "2020-10-12"
+                            }
+                        }
+                    },
+                    {
+                        "name": "date_to",
+                        "in": "path",
+                        "description": "date to",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "Date format YYYY-MM-DD.",
+                                "value": "2020-10-14"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of currency values with filters."
+                    }
+                }
+            }
+        },
+        "/api/v1/currencies/{currency_code}/last": {
+            "get": {
+                "operationId": "c439ab7df1a45412e6efef523a0556a2",
+                "parameters": [
+                    {
+                        "name": "currency_code",
+                        "in": "path",
+                        "description": "currency code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "USD currency.",
+                                "value": "USD"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display a the last currency value of a specific currency."
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

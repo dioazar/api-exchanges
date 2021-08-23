@@ -10,6 +10,7 @@
         "ext-libxml": "*",
         "ext-simplexml": "*",
         "ext-xml": "*",
+        "darkaonline/l5-swagger": "^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.4.4",

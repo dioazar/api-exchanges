@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('insertDaily')->daily();
+        $schedule->command('l5-swagger:generate')->daily();
     }
 
     /**

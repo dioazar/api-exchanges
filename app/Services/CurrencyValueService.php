@@ -38,6 +38,26 @@ class CurrencyValueService
         }
     }
 
+    public function getWithFilters(array $filters)
+    {
+        $currency = Currency::getByCode($filters['currency_code']);
+        $currencyValues = CurrencyValue::query()->where('currency_id', $currency->id);
+
+        if(isset($filters['date_from'])) {
+            $from = Carbon::createFromFormat('Y-m-d', $filters['date_from'])->startOfDay();
+            $to = Carbon::createFromFormat('Y-m-d', $filters['date_to'])->endOfDay();
+            $currencyValues->whereBetween('date', [$from, $to]);
+        }
+
+        return $currencyValues->orderBy('id', 'DESC')->paginate(50);
+    }
+
+    public function getLast(string $currency_code)
+    {
+        $currency = Currency::getByCode($currency_code);
+        return CurrencyValue::where('currency_id', $currency->id)->orderBy('id', 'DESC')->first();
+    }
+
     private function format(Collection $data): Collection
     {
         $coll = new Collection();
